@@ -1,9 +1,6 @@
-#Set Work Directory
+
 setwd("C:\\Users\\david.federer\\Documents\\Data Science Library\\Coursera\\Getting and Cleaning Data\\UCI HAR Dataset\\")
 
-#Step 1: Merge Test and Training Datasets
-
-#Step 1a: Read Datasets and Columnbind the Independent and the Response Variables 
 X_train <- read.table("train\\X_train.txt")
 y_train <- read.table("train\\y_train.txt")
 subject_train <- read.table("train\\subject_train.txt")
@@ -16,20 +13,17 @@ subject_test <- read.table("test\\subject_test.txt")
 
 dat_test <- cbind(X_test, y_test, subject_test)
 
-#Step 1b: Consolidate Datasets
+
 dat_all <- rbind(dat_train, dat_test)
 
-#Step 1c: Assign Column Names
 features <- read.table("features.txt")
 features <- as.character(features[,2])
 colnames(dat_all) <- c(features, "ACTIVITY", "SUBJECT_ID") 
 
-#Step 1d: Recode Values in Activity Field
 activity_labels <- read.table("activity_labels.txt")
 dat_all$ACTIVITY <- activity_labels[dat_all$ACTIVITY,2]
 
 
-#Step 2: Extract Measurements on Mean and Standard Deviation
 
 index_cols_retained <- c(1,2,3,4,5,6,41,42,43,44,45,46,81,82,83,84,85,86,121,122,123,124,125,126,161,162,163,164,165,166,201,202,214,215,227,240,241,253,254,266,267,268,269,270,271,345,346,347,348,349,350,424,425,426,427,428,429,503,504,516,517,529,530,542,543,562,563)
 dat_mean_stdev <- dat_all[, index_cols_retained]
@@ -106,8 +100,6 @@ colnames(dat_mean_stdev) <- new_col_names
 dat_mean_stdev$ID <- 1:nrow(dat_mean_stdev)
 
 
-
-#Step 5: Create Independent a Tidy Dataset
 
 dat_ind_1 <- dat_mean_stdev[, c(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,66,67,68)]
 dat_ind_2 <- dat_mean_stdev[, c(31,32,33,34,35,36,37,38,39,58,59,60,61,62,63,64,65,66,67,68)]
