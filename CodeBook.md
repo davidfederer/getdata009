@@ -1,18 +1,3 @@
-Work performed to clean the data
-Step:
-#1. Test and Train datasets were consolidated into one dataset, based on the X_train, X_test, y_test and y_train files
-#2. Column names were assigned to the columns of the consolidated dataset based on the features text file
-#3. The values in the "ACTIVITY" column (sourced from y_train and y_test files) were recoded into more intuitive values based on the "activity_labels" file
-#4. The full dataset were subsetted to contain only the measurements on the mean and standard deviation for each measurement
-#5. The substrings of the column names of the remaining columns were converted into more intuititive descriptions
-#6. The full dataset was split into two datasets, one containing all triaxial signals and one without the triaxial signals
-#7. All columns in the datasets mentioned in the previous step, were collapsed into key-value pairs whilst retaining "ACTIVITY" and "SUBJECT_ID" as separate columns
-#8a. The "key" generated in the previous step was split into "DOMAIN_SIGNAL_TYPE", "MOTION_COMPONENT", "metric", "TRIAXIAL_DIRECTION" for the dataset with triaxial signals
-#8b. ...and "DOMAIN_SIGNAL_TYPE", "MOTION_COMPONENT", "metric" for the dataset without measurements on triaxial signals
-#9. For both aforementioned datasets the "metric" field contains values for the metric type, i.e. "mean" or "standard deviation". The values of this field where spread across
-two columns, i.e. "MEAN" and "ST_DEV"
-#10. The two intermediate datasets were merged superfluous fields created in the process, e.g. "metric" were removed. 
-
 
 Data Dictionary
 
