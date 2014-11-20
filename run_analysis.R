@@ -1,3 +1,4 @@
+#Set Work Directory
 setwd("C:\\Users\\david.federer\\Documents\\Data Science Library\\Coursera\\Getting and Cleaning Data\\UCI HAR Dataset\\")
 
 #Step 1: Merge Test and Training Datasets
@@ -116,7 +117,7 @@ library(dplyr)
 
 dat_ind_cleaned_1 <- dat_ind_1 %>% 
                      gather(mt, value, -c(ID, SUBJECT_ID, ACTIVITY)) %>% 
-                     separate(mt, c("DOMAIN_SIGNAL_TYPE", "MOTION_COMPONENT", "metric", "THREE_AXIAL_DIRECTION"), sep="-") %>%
+                     separate(mt, c("DOMAIN_SIGNAL_TYPE", "MOTION_COMPONENT", "metric", "TRIAXIAL_DIRECTION"), sep="-") %>%
                      spread(metric, value)
 
 dat_ind_cleaned_2 <- dat_ind_2 %>%
@@ -127,6 +128,6 @@ dat_ind_cleaned_2 <- dat_ind_2 %>%
 
 library(gtools)
 dat_cleaned <- smartbind(dat_ind_cleaned_1, dat_ind_cleaned_2)
-dat_cleaned <- dat_cleaned[,c("SUBJECT_ID", "DOMAIN_SIGNAL_TYPE", "MOTION_COMPONENT", "THREE_AXIAL_DIRECTION", "MEAN", "ST_DEV")]
+dat_cleaned <- dat_cleaned[,c("SUBJECT_ID", "DOMAIN_SIGNAL_TYPE", "MOTION_COMPONENT", "TRIAXIAL_DIRECTION", "MEAN", "ST_DEV", "ACTIVITY")]
 
 head(dat_cleaned)
